@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <div class="card-content">
+        <span class='card-title'>{{ kaiju.name }} ({{ kaiju.japanese_name }})</span>
+        <img src="{{ kaiju.picture }}" alt="{{ kaiju.name }}">
+        <br>
+        <audio controls>
+            <source src="{{ kaiju.noise }}">
+            Your browser does not support the audio element.
+        </audio>
+        <p>Japanese Name: {{ kaiju.japanese_name }}</p>
+        <p>Height: {{ kaiju.height }}</p>
+        <p>Length: {{ kaiju.length }}</p>
+        <p>Weight: {{ kaiju.weight }}</p>
+        <p>Description: {{ kaiju.description }}</p>
+        
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Kaijus List</h1>
+{% for kaiju in kaijus %}
+    <div class="card">
+
+        {% comment %} <a href="/kaijus/{{ kaiju.id }}"> {% endcomment %}
+        <a href="{% url 'detail' kaiju.id %}">
+
+        <div class="card-content">
+            <!-- <img src="{{ kaiju.picture }}"/> -->
+            <span class="card-title">{{ kaiju.name }}</span>
+        </div>
+    </a>
+
+    
+    </div>
+{% endfor %}
+{% endblock %}
