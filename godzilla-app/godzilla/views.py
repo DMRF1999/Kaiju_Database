@@ -1,23 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from rest_framework import viewsets
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.exceptions import PermissionDenied
+from django.contrib.auth import get_user_model
+from django.conf import settings
+import jwt
+from .models import Kaiju
+from .serializers import KaijuSerializer
+from django.contrib.auth import login
+from django.contrib import messages
+User = get_user_model()
 
 # Create your views here.
-from dataclasses import dataclass 
-from django.http import HttpResponse
-from .models import Kaiju
-from django.views.generic.edit import CreateView
 
-def home(request):
-    return HttpResponse('<h1>Kaiju</h1>')
-
-
-def about(request):
-    return render(request, 'about.html')
-
-def kaiju_index(request):
-    kaijus = Kaiju.objects.all()
-    return render(request, 'kaijus/index.html', { 'kaijus': kaijus})
-
-    
-def kaiju_detail(request, kaiju_id):
-    kaiju = Kaiju.objects.get(id=kaiju_id)
-    return render(request, 'kaijus/detail.html', {'kaiju': kaiju})
+class KaijuView(viewsets.ModelViewSet):
+    serializer_class = KaijuSerializer
+    queryset = Kaiju.objects.all()

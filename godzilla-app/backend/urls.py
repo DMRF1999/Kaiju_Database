@@ -15,14 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from godzilla import views
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.staticfiles.urls import static
 
+from .apps.accounts.urls import accounts_urlpatterns
+
+router = routers.DefaultRouter()
+router.register(r'kaijus', views.KaijuView, 'kaiju')
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('godzilla.urls'))
+    path('api/', include(router.urls)),
 ]
 
+urlpatterns += accounts_urlpatterns
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

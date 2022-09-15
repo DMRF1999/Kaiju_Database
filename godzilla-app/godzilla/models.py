@@ -1,4 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import User
+
+User._meta.get_field('email')._unique = True
+User._meta.get_field('email').blank = False
+User._meta.get_field('email').null = False
 
 # Create your models here.
 class Kaiju(models.Model):
@@ -8,10 +14,11 @@ class Kaiju(models.Model):
     height = models.CharField(max_length=120)
     length = models.CharField(max_length=120)
     weight = models.CharField(max_length=120)
-    noise = models.TextField(default='No Audio')
-    picture = models.TextField( default='No Image')
+    noise = models.FileField(upload_to='noise')
+    picture = models.FileField(upload_to='picture')
     description = models.TextField()
     
 
     def _str_(self):
         return self.name
+
