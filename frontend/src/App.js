@@ -1,17 +1,18 @@
 // App.js
 import React, { Component} from 'react';
 import Root from './Root';
-import { Route, Switch, NavLink } from 'react-router-dom'
+import ReactDOM from 'react-dom'
+import { Route, Switch, BrowserRouter, useParams } from 'react-router-dom'
 import Home from './components/Home';
 import KaijuList from './pages/kaijuList';
-import KaijuView from './pages/kaijuView'
+import KaijuPage from './pages/kaijuContainer'
 import Signup from './components/signup/Signup';
 import Login from './components/login/Login'
 import { ToastContainer } from "react-toastify";
 import axios from "axios";
+import requireAuth from "./Utils/RequireAuth";
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/";
-
 
 
 class App extends Component {
@@ -19,14 +20,16 @@ class App extends Component {
     return (
       <div>
         <Root>
+        <BrowserRouter>
           <Switch>
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
-            <Route path="/kaijus" component={KaijuList} />
+            <Route path='/kaijus/:id' component={KaijuPage} />
+            <Route path="/kaijus" component={requireAuth(KaijuList)} />
             <Route exact path="/" component={Home} />
-            <Route path='/kaijus/:id' component={KaijuView} />
           </Switch>
-        </Root>
+          </BrowserRouter>
+          </Root>
         <ToastContainer hideProgressBar={true} newestOnTop={true} />
       </div>
     );

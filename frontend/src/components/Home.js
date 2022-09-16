@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import { Container, Navbar, Nav } from "react-bootstrap";
-import { logout } from "./login/LoginActions";
+import { logout } from "../components/login/LoginActions";
 
 class Home extends Component {
   onLogout = () => {
@@ -17,7 +17,6 @@ class Home extends Component {
     return (
       <div>
         <Navbar bg="light">
-          <Navbar.Brand href="/kaijus">Kaijus</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
@@ -28,6 +27,8 @@ class Home extends Component {
         </Navbar>
         <Container>
           <h1>Kaiju Database</h1>
+          <Navbar.Brand href="/kaijus">Kaiju List</Navbar.Brand>
+          <Navbar.Brand href="/signup">Sign Up</Navbar.Brand>
         </Container>
       </div>
     );

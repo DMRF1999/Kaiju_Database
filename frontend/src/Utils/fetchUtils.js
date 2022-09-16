@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import * as React from 'react';
+import { useParams } from 'react-router-dom'
 
 const BASE_URL = 'http://localhost:8000/api'
 
@@ -7,14 +8,13 @@ function fetchResponseByURL(relativeURL, queryString) {
     return fetch(`${BASE_URL}/${relativeURL}/?${queryString}`)
       .then(res =>
         res.json()
-        .then(console.timeEnd())
       )
       .catch(error => console.error(error))
   }
   
   export function fetchObjectById(resource, id) {
     return fetchResponseByURL(`${resource}/${id}`).then(res => {
-      console.log("fetchObjectById",`${resource}/${id}/`, res);
+      console.log("fetchObjectById",`${resource}/${id}`, res);
       return {
         data: res
       }

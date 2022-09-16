@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { fetchObjectById } from '../Utils/fetchUtils'
+import App from '../App';
+import { Link, useParams, useLocation } from 'react-router-dom'
+
 
 const propTypes = {
   id: PropTypes.string
 }
 
 class KaijuContainer extends Component {
-
 
 
   constructor(props) {

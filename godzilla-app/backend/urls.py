@@ -18,6 +18,7 @@ from django.urls import path, include
 from rest_framework import routers
 from godzilla import views
 from django.conf import settings
+from rest_framework.routers import DefaultRouter
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.staticfiles.urls import static
 

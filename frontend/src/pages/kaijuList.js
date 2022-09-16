@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import DataCard from './dataCard'
 import { fetchObjects } from '../Utils/fetchUtils'
@@ -66,14 +66,15 @@ class kaijuList extends Component {
     fetchObjects('kaijus')
     .then(res => this.setState({
       kaijus: res.data,
-      loading: false
-    },console.log(res.data)))
+      loading: false,
+    }))
   }
 
   render() {
-    const {kaijus, loading } = this.state
+    const {kaijus } = this.state
     return (
       <div>
+        <Link to='/'>Home</Link>
         <h1>Kaiju List</h1>
           {kaijus.map(({id, name, picture, japanese_name}, i) => (
               <DataCard
@@ -82,7 +83,7 @@ class kaijuList extends Component {
                 name={name}  
                 picture={picture}
                 japanese_name={japanese_name}
-                baseLink={'/kaijus'}
+                baseLink={`/kaijus`}
               />
           ))}
       </div>
