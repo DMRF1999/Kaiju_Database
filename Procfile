@@ -1,1 +1,1 @@
-web: django-godzilla-react.wsgi
+web: gunicorn django-godzilla-react.wsgi
