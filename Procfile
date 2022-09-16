@@ -1,1 +1,1 @@
-web: django-godzilla-react.wsgi
+web: npm run start
