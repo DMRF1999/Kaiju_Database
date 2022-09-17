@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class GodzillaConfig(AppConfig):
+class main_appConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'godzilla'
+    name = 'main_app'

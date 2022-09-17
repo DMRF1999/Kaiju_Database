@@ -24,7 +24,7 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password
     };
-    this.props.login(userData, "/kaijus"); // <--- login request
+    this.props.login(userData,("/kaijus")); // <--- login request
   };
   render() {
     return (
@@ -55,7 +55,7 @@ class Login extends Component {
                 />
               </Form.Group>
             </Form>
-            <Button color="primary" onClick={this.onLoginClick}>
+            <Button color="primary" onClick={this.onLoginClick} >
               Login
             </Button>
             <p className="mt-2">

@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-m4$3xhp&w$byne3((^(^_k*zf$za!=7sa(&yv84fva-44(801m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
-    'godzilla',
+    'main_app',
     'backend.apps.accounts',
 ]
 
@@ -73,7 +73,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://127.0.0.1:3000"
+    "https://kaiju-database.herokuapp.com"
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -157,7 +157,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000'
+     'http://localhost:3000',
+     'https://kaiju-database.herokuapp.com'
 ]
 
 django_on_heroku.settings(locals())

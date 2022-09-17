@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import DataCard from './dataCard'
 import { fetchObjects } from '../Utils/fetchUtils'
+import styled from 'styled-components'
 
 const propTypes = {
   page: PropTypes.number,
@@ -12,6 +13,28 @@ const defaultProps =
 {
 page: 1
 }
+
+const KaijuListContainerStyle = styled.nav`
+h1{
+  text-align: center;
+  font-size: 50px;
+  position: relative;
+  bottom: 0px
+}
+.home{
+  color: black;
+  font-size: 1.5vw;
+  font-size: 30px;
+  text-decoration: none;
+  position: fixed;
+  left: 5%;
+  top: 0%;
+}
+.home:hover{
+  color: #f90;
+  text-decoration: underline;
+  }
+`
 
 
 class kaijuList extends Component {
@@ -73,8 +96,9 @@ class kaijuList extends Component {
   render() {
     const {kaijus } = this.state
     return (
+      <KaijuListContainerStyle>
       <div>
-        <Link to='/'>Home</Link>
+        <Link className='home'to='/'>Home</Link>
         <h1>Kaiju List</h1>
           {kaijus.map(({id, name, picture, japanese_name}, i) => (
               <DataCard
@@ -87,6 +111,7 @@ class kaijuList extends Component {
               />
           ))}
       </div>
+      </KaijuListContainerStyle>
     )
   }
 

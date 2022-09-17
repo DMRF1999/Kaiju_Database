@@ -26,12 +26,12 @@ class EmailVerificationTest(APITestCase):
         # register the new user
         response = self.client.post(self.register_url, self.user_data, format="json")
         # expected response 
-        # self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         # expected one email to be send
-        # self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(len(mail.outbox), 1)
         
         # parse email to get uid and token
-        # email_lines = mail.outbox[0].body.splitlines()
+        email_lines = mail.outbox[0].body.splitlines()
         # you can print email to check it
         # print(mail.outbox[0].subject)
         # print(mail.outbox[0].body)
